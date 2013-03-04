@@ -1,0 +1,155 @@
+﻿@model SongShout.getSongViewModel
+@{
+    ViewBag.Title = "ShoutSong - Twitter Song Dedication App";
+}
+
+
+
+
+<script type="text/javascript">
+
+    function getSongInfo3() {
+        var searchText = $("#SearchString").val();
+      
+        $('#list').empty();
+        $.getJSON('/Home/getSongAjax/?SearchString=' + searchText, function (data) {
+            var i = 0;
+            $.each(data, function (item) {
+                var rdb = "<tr><td> <input id='RadioButton" + i + "' onclick='RecordCheck(this)'  type='radio' name='City' value='" + data[item].Url + "'/> </td> <td> " + data[item].SongName + " </td><td>" + data[item].ArtistName + " </td><td><a href='" + data[item].Url + "' target='_blank'>Listen Now</a></td><td style='visibility:hidden'>" + data[item].SongID + "</td></tr>";
+
+                $('#list').append(rdb);
+                i++;
+            });
+        });
+
+        $('#list').show();
+
+    }
+    </script>
+    <script type="text/javascript">
+        function RecordCheck(rdb) {         
+
+            songname = $(rdb).parent().siblings("td:eq(0)").html();
+            artist = $(rdb).parent().siblings("td:eq(1)").html();
+            songid = $(rdb).parent().siblings("td:eq(3)").html();
+    
+   
+
+            $('#Url').val(rdb.value);
+            $('#SongName').val(songname);
+            $('#ArtistName').val(artist);
+            $('#SongId').val(songid);
+          
+        }
+    </script>
+
+
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal"})) 
+{
+
+    <div class="page-header"><h1>SongShout <small>Dedicate a song on Twitter.</small></h1></div>
+    
+    
+          <div class="hero-unit">
+       
+        <p>
+            Search for a song below, enter a message and have a link to the full song sent to Twitter.  Sort of a throwback to dedicating songs to people from old school radio.  Consider it a music shoutout on Twitter.
+
+        </p>
+        <p></p>
+      </div>
+    
+   
+
+   
+    
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span10">
+
+    <div class="control-group">
+     <div class="input-append">
+    @Html.LabelFor(model => model.SearchString, new { @class = "span2" })
+          <div class="controls">
+    @Html.TextBoxFor(model => model.SearchString) 
+      <button class="btn btn-primary" type="button" onclick='javascript: getSongInfo3()'>Find Song</button>
+             
+              </div>
+    </div>
+    </div>
+    
+
+    <div class="control-group">
+          <div class="controls">
+    <table id='list' class="table  table-condensed table-striped" style='display:none'>
+        <thead>  
+          <tr>  
+            <th></th>  
+           <th>Song</th>  
+           <th>Artist</th>  
+                <th></th>  
+          </tr>  
+        </thead>  
+        <tbody> 
+
+</tbody>
+
+
+    </table>  
+    </div>
+        </div>
+    
+    <div class="control-group">
+    @Html.LabelFor(model => model.senderTwitterName, new { @class = ".control-label" })
+    <div class="controls">
+    @Html.TextBoxFor(model => model.senderTwitterName)
+   @Html.ValidationMessageFor(model => model.senderTwitterName) 
+
+    </div>
+    </div>
+     <div class="control-group">
+    @Html.LabelFor(model => model.recipientTwitterName, new { @class = ".control-label" })
+         <div class="controls">
+    @Html.TextBoxFor(model => model.recipientTwitterName)
+              @Html.ValidationMessageFor(model => model.recipientTwitterName) 
+    </div>
+    </div>
+     <div class="control-group">
+    @Html.LabelFor(model => model.Message, new { @class = ".control-label" })
+         <div class="controls">
+    @Html.TextAreaFor(model => model.Message)
+              @Html.ValidationMessageFor(model => model.Message) 
+              <span class="help-block">96 characters max..</span>
+        </div>
+    </div>
+
+    
+
+    @Html.HiddenFor(model => model.Url)
+    @Html.HiddenFor(model => model.SongId)
+    @Html.HiddenFor(model => model.SongName)
+    @Html.HiddenFor(model => model.ArtistId)
+    @Html.HiddenFor(model => model.ArtistName)
+       @Html.HiddenFor(model => model.AlbumName)
+      @Html.HiddenFor(model => model.AlbumId)
+
+    
+     <div class="control-group">
+         <div class="controls">
+      <input type="submit" class="btn btn-primary" value="Send song dedication to Twitter" />   
+            
+             <span class="help-block">You will be promoted by Twitter to give access to SongShout.</span>       
+          </div>
+    </div>
+
+    </div>
+
+<div class="span2">
+   
+</div>
+</div>
+</div>
+   
+}
+

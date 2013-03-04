@@ -1,0 +1,36 @@
+﻿@model SongShout.getSongViewModel
+
+@{
+  
+}
+
+  <div class="page-header"><h1>SongShout <small>Dedicate a song on Twitter.</small></h1></div>
+    
+    
+          <div class="hero-unit">
+       
+        <p>
+            Cool, you just sent a dedication through SongShout.  The person you sent it to will get your message in their Twitter Stream with a link to listen to the full song.
+
+        </p>
+        <p></p>
+      </div>
+    
+    
+<dl class="dl-horizontal">
+        <dt>To:</dt>
+    <dd>  @Html.DisplayFor(model => model.recipientTwitterName)</dd>
+            <dt>From:</dt>
+    <dd> @Html.DisplayFor(model => model.senderTwitterName)</dd>
+        <dt>Message:</dt>
+    <dd> @Html.DisplayFor(model => model.Message)</dd>
+    <dt>Song:</dt>
+    <dd> @Html.DisplayFor(model => model.SongName)</dd>
+        <dt>Artist:</dt>
+    <dd> @Html.DisplayFor(model => model.ArtistName)</dd>
+            <dt></dt>
+    <dd><a href="@Html.DisplayFor(model => model.Url)" class="btn btn-primary" target="_blank">Listen to Song</a> <a href="/home/index" class="btn">Send another SongShout!</a> </dd>
+    </dl>
+
+
+ 
