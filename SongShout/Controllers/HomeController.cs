@@ -288,16 +288,16 @@ namespace SongShout
         {
 
             OAuthTokens tokens = new OAuthTokens();
-            tokens.AccessToken = "15290567-jECDdHBVwHVSGtKNe18y1765t7NCXyP17PvlyWJFP";
-            tokens.AccessTokenSecret = "L2iipX2uKQ4FBjkh0ES1Vs4ASV3JaS52LkiQvCR31Q";
-            tokens.ConsumerKey = "rG2CcgK3CsS1TvtgehFgMQ";
-            tokens.ConsumerSecret = "m6Ad8Af2jQNOy7OT4JUtThK4LS4ZlMwZh7SlWGJg9Y";
+            tokens.AccessToken = "xxx";
+            tokens.AccessTokenSecret = "xxx";
+            tokens.ConsumerKey = "xxx";
+            tokens.ConsumerSecret = "xxx";
 
 
 
 
             // Obtain a request token
-            OAuthTokenResponse requestToken = OAuthUtility.GetRequestToken("rG2CcgK3CsS1TvtgehFgMQ", "m6Ad8Af2jQNOy7OT4JUtThK4LS4ZlMwZh7SlWGJg9Y", "http://localhost:63335/Home/TwitterCallback");
+            OAuthTokenResponse requestToken = OAuthUtility.GetRequestToken("rxxx", "xxx", "http://localhost:63335/Home/TwitterCallback");
 
             // Direct or instruct the user to the following address:
             Uri authorizationUri = OAuthUtility.BuildAuthorizationUri(requestToken.Token);
