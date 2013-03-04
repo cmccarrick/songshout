@@ -108,11 +108,7 @@ namespace SongShout
                 //must redirect user to Twitter to grant access and get tokens
 
  
-             //   OAuthTokens tokens = new OAuthTokens();
-             //   tokens.AccessToken = "15290567-jECDdHBVwHVSGtKNe18y1765t7NCXyP17PvlyWJFP";
-              //  tokens.AccessTokenSecret = "L2iipX2uKQ4FBjkh0ES1Vs4ASV3JaS52LkiQvCR31Q";
-              //  tokens.ConsumerKey = "rG2CcgK3CsS1TvtgehFgMQ";
-              //  tokens.ConsumerSecret = "m6Ad8Af2jQNOy7OT4JUtThK4LS4ZlMwZh7SlWGJg9Y";
+
 
                 //using this handy tool: http://lostechies.com/chrismissal/2013/02/21/introducing-formo-dynamic-configuration/
                 dynamic config = new Configuration();
@@ -180,7 +176,7 @@ namespace SongShout
             //would have to change the .net library since it does not support returning the hash now.
 
 
-            IBitlyService s = new BitlyService("cmccarrick", "R_7c1f48b620b4ebe3d8232f767dc3a8e5");
+            IBitlyService s = new BitlyService("cmccarrick", "xxx");
             string shortened;
             string songshouturl;
             
@@ -272,19 +268,13 @@ namespace SongShout
         public JArray getSongAjax(string SearchString)
         {
 
-            //   WebClient webClient = new WebClient();
-            //  dynamic result = JsonValue.Parse(webClient.DownloadString("http://tinysong.com/s/tiny+dancer?format=json&key=4cf0d5f9a763df9bc64b22cb0ba7c46c"));
-
-
-            //   string url = result[0].Url;
-            //   string SongName = result[0].SongName;
-
+  
 
 
             WebClient webClient = new WebClient();
-            //   JArray a = JArray.Parse(webClient.DownloadString("http://tinysong.com/s/tiny+dancer?format=json&key=4cf0d5f9a763df9bc64b22cb0ba7c46c"));
+            //   JArray a = JArray.Parse(webClient.DownloadString("http://tinysong.com/s/tiny+dancer?format=json&key=xxx"));
 
-            JArray a = JArray.Parse(webClient.DownloadString("http://tinysong.com/s/" + SearchString.Replace(" ", "+") + "?format=json&key=4cf0d5f9a763df9bc64b22cb0ba7c46c&limit=5"));
+            JArray a = JArray.Parse(webClient.DownloadString("http://tinysong.com/s/" + SearchString.Replace(" ", "+") + "?format=json&key=xxx&limit=5"));
 
 
 
